@@ -1,13 +1,14 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { Poppins } from 'next/font/google';
 import '../globals.css';
 import { ThemeProvider } from 'next-themes';
+import { Navbar } from '@/shared/components/layout/Navbar';
 
-const inter = Inter({ subsets: ['latin'] });
+const poppins = Poppins({ subsets: ['latin'], weight: ['400', '500', '700'] });
 
 export const metadata: Metadata = {
-	title: 'Next.js Localization Example',
-	description: 'An example of how to localize a Next.js app.',
+	title: 'Gallery App',
+	description: 'All your favorite photos in one place.',
 };
 
 export default function LocaleLayout({
@@ -19,13 +20,14 @@ export default function LocaleLayout({
 }) {
 	return (
 		<html lang={locale} suppressHydrationWarning>
-			<body className={inter.className + ' bg-bkg text-content'}>
+			<body className={poppins.className + ' bg-bkg text-content'}>
 				<ThemeProvider
 					attribute='class'
 					defaultTheme='system'
 					enableSystem
 					disableTransitionOnChange
 				>
+					<Navbar />
 					{children}
 				</ThemeProvider>
 			</body>

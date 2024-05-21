@@ -6,5 +6,9 @@
 	"LocaleSwitcher": {
 		"label": "Change language",
 		"locale": "{locale, select, es {Spanish} en {English} other {Unknown}}"
+	},
+	"Navbar": {
+		"home": "Home",
+		"about": "About"
 	}
 }

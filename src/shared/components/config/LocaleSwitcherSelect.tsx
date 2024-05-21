@@ -27,6 +27,7 @@ export const LocaleSwitcherSelect = (props: Props) => {
 				{ pathname, params },
 				{ locale: nextLocale }
 			);
+			router.refresh();
 		});
 	};
 
