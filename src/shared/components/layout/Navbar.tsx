@@ -1,7 +1,7 @@
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import Link from 'next/link';
-import { LocaleSwitcher } from '../config';
+import { LocaleSwitcher, ThemeSwitch } from '../config';
 
 export const Navbar = () => {
 	const t = useTranslations('Navbar');
@@ -39,6 +39,7 @@ export const Navbar = () => {
 
 			<div className='flex gap-4'>
 				<LocaleSwitcher />
+				<ThemeSwitch />
 			</div>
 		</nav>
 	);
