@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { Poppins } from 'next/font/google';
 import '../globals.css';
 import { ThemeProvider } from 'next-themes';
-import { Navbar } from '@/shared/components/layout/Navbar';
+import { Navbar, Footer } from '@/shared/components/layout';
 
 const poppins = Poppins({ subsets: ['latin'], weight: ['400', '500', '700'] });
 
@@ -27,8 +27,11 @@ export default function LocaleLayout({
 					enableSystem
 					disableTransitionOnChange
 				>
-					<Navbar />
-					{children}
+					<div className='flex flex-col min-h-svh'>
+						<Navbar />
+						{children}
+						<Footer />
+					</div>
 				</ThemeProvider>
 			</body>
 		</html>

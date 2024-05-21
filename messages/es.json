@@ -10,5 +10,12 @@
 	"Navbar": {
 		"home": "Inicio",
 		"about": "Nosotros"
+	},
+	"Footer": {
+		"about": "Nosotros",
+		"privacy": "Privacidad",
+		"license": "Licencia",
+		"contact": "Contacto",
+		"rights": "Todos los derechos reservados."
 	}
 }
