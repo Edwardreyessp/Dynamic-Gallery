@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+	.text-balance {
+		text-wrap: balance;
+	}
+}
+
+@layer base {
+	:root {
+		--primary: 34 34 34;
+		--primary-foreground: 254 255 254;
+	}
+	:root[class='dark'] {
+		--primary: 149 163 179;
+		--primary-foreground: 34 34 34;
+	}
+}

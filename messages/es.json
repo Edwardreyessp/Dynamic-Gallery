@@ -1,0 +1,10 @@
+{
+	"Home": {
+		"title": "Bienvenido al ejemplo de internazionalización de Next.js",
+		"subtitle": "Este es un ejemplo de cómo se puede internacionalizar una aplicación Next.js con next-intl."
+	},
+	"LocaleSwitcher": {
+		"label": "Cambiar idioma",
+		"locale": "{locale, select, es {Español} en {Inglés} other {Unknown}}"
+	}
+}
