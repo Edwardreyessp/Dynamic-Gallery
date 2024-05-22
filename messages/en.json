@@ -1,7 +1,7 @@
 {
 	"Home": {
-		"title": "Welcome to the Next.js Localization Example",
-		"subtitle": "This is a simple example of how to localize a Next.js app using next-intl."
+		"title": "Free and high quality stock images",
+		"subtitle": "Download free stock images for your projects. All images are free to use and high quality."
 	},
 	"LocaleSwitcher": {
 		"label": "Change language",
@@ -17,5 +17,9 @@
 		"license": "Licensing",
 		"contact": "Contact",
 		"rights": "All rights reserved."
+	},
+	"SearchBar": {
+		"placeholder": "Mockups, photos, logos...",
+		"button": "Search"
 	}
 }
