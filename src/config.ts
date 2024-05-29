@@ -8,6 +8,10 @@ export const pathnames = {
 		en: '/about',
 		es: '/nosotros',
 	},
+	'/gallery': {
+		en: '/gallery',
+		es: '/galeria',
+	},
 } satisfies Pathnames<typeof locales>;
 
 // Use the default: `always`
