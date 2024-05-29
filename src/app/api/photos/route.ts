@@ -1,12 +1,13 @@
-export async function GET() {
-	const headers = new Headers();
-	headers.append('Content-Type', 'application/json');
-	headers.append('API-Key', process.env.DATA_API_KEY || '');
+import prisma from '@/lib/db';
 
-	const res = await fetch('https://data.mongodb-api.com/...', {
-		headers: headers,
+export async function getPhotos(search: string) {
+	const photos = await prisma.photo.findMany({
+		where: {
+			slug: {
+				contains: search,
+			},
+		},
 	});
-	const data = await res.json();
 
-	return Response.json({ data });
+	return photos;
 }
