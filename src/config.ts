@@ -15,6 +15,6 @@ export const pathnames = {
 } satisfies Pathnames<typeof locales>;
 
 // Use the default: `always`
-export const localePrefix = undefined;
+export const localePrefix = 'never' as const;
 
 export type AppPathnames = keyof typeof pathnames;

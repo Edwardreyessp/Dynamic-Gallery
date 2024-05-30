@@ -1,6 +1,10 @@
 import prisma from '@/lib/db';
 
-export async function getPhotos(search: string) {
+export async function GET(request: Request) {
+	console.log('GET request', request);
+	const search = new URL(request.url).searchParams.get('search');
+	console.log('search', search);
+
 	if (!search) {
 		return [];
 	}
@@ -14,8 +18,4 @@ export async function getPhotos(search: string) {
 	});
 
 	return photos;
-}
-
-export async function GET(request: Request) {
-	return Response.json({ message: 'GET request' });
 }

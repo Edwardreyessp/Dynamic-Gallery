@@ -1,27 +1,14 @@
-import { getPhotos } from '@/app/api/photos/route';
-import Image from 'next/image';
+import { SearchBar } from '@/features/search';
 
-const GalleryPage = async () => {
-	const photos = await getPhotos('camaleon');
-
+const GalleryPage = async ({
+	searchParams,
+}: {
+	searchParams: { [key: string]: string | string[] | undefined };
+}) => {
 	return (
-		<div className='flex-1 flex items-center justify-center'>
-			{photos.map(photo => (
-				<div key={photo.id} className='p-4'>
-					<h2>{photo.title}</h2>
-					<Image
-						src={photo.url}
-						alt={photo.title}
-						width={500}
-						height={500}
-						style={{
-							aspectRatio: '16 / 9',
-							width: 'auto',
-							height: 'auto',
-						}}
-					/>
-				</div>
-			))}
+		<div className='flex-1 flex items-center flex-col'>
+			<SearchBar search={searchParams.search as string} />
+			<p>Mi nueva imagen</p>
 		</div>
 	);
 };

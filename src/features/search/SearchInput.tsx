@@ -15,7 +15,7 @@ export const SearchInput = (props: Props) => {
 
 	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
-		router.push(`gallery?${searchParams.toString()}`);
+		router.push(`gallery?${searchParams.toString()}&id=1`);
 	};
 
 	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
