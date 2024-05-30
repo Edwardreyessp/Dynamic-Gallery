@@ -23,7 +23,7 @@ export const SearchOptions = ({ search }: Props) => {
 	const [query] = useDebounce(search, 500);
 
 	useEffect(() => {
-		fetch(`http://localhost:3000/api/photos?search=${query}`)
+		fetch(`/api/photos?search=${query}`)
 			.then(res => res.json())
 			.then(data => setPhotos(data));
 	}, [query]);
