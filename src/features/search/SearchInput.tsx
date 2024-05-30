@@ -1,29 +1,40 @@
 'use client';
 import { MagnifyingGlassIcon } from '@heroicons/react/24/solid';
-import { usePathname, useRouter, useSearchParams } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
+import type { Dispatch, SetStateAction } from 'react';
 
 type Props = {
 	placeholder: string;
 	textButton: string;
+	inputText: string;
+	setInputText: Dispatch<SetStateAction<string>>;
 };
 
 export const SearchInput = (props: Props) => {
-	const { placeholder, textButton } = props;
+	const { placeholder, textButton, setInputText, inputText } = props;
 	const router = useRouter();
-	const pathname = usePathname();
 	const searchParams = useSearchParams();
+
+	// useEffect(() => {
+	// 	const params = new URLSearchParams(searchParams.toString());
+	// 	params.set('search', query);
+	// 	router.push(pathname + '?' + params.toString(), {
+	// 		scroll: false,
+	// 	});
+	// }, [query, router, pathname, searchParams]);
 
 	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
-		router.push(`gallery?${searchParams.toString()}&id=1`);
+		setInputText('');
+
+		const params = new URLSearchParams(searchParams.toString());
+		params.set('search', inputText);
+
+		router.push(`gallery?${params.toString()}`);
 	};
 
 	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-		const params = new URLSearchParams(searchParams.toString());
-		params.set('search', e.target.value);
-		router.push(pathname + '?' + params.toString(), {
-			scroll: false,
-		});
+		setInputText(e.target.value);
 	};
 
 	return (
@@ -44,7 +55,7 @@ export const SearchInput = (props: Props) => {
 					className='block w-full p-4 ps-10 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white focus:outline-none'
 					placeholder={placeholder}
 					onChange={handleChange}
-					defaultValue={searchParams.get('search') ?? ''}
+					value={inputText}
 				/>
 				<button
 					type='submit'

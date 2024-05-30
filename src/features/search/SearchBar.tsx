@@ -1,20 +1,15 @@
 import { useTranslations } from 'next-intl';
-import { SearchInput, SearchOptionsDrawer } from './';
-import { Suspense } from 'react';
+import { SearchComponents } from './';
 
-type Props = {
-	search: string;
-};
-
-export const SearchBar = ({ search }: Props) => {
+export const SearchBar = () => {
 	const t = useTranslations('SearchBar');
 
 	return (
 		<div className='w-full flex flex-col gap-4 items-center'>
-			<SearchInput placeholder={t('placeholder')} textButton={t('button')} />
-			<Suspense fallback={<div>Loading...</div>}>
-				<SearchOptionsDrawer search={search} />
-			</Suspense>
+			<SearchComponents
+				placeholder={t('placeholder')}
+				textButton={t('button')}
+			/>
 		</div>
 	);
 };

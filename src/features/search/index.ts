@@ -1,3 +1,5 @@
 export * from './SearchBar';
+export * from './SearchComponents';
 export * from './SearchInput';
-export * from './SearchOptionsDrawer';
+export * from './SearchOption';
+export * from './SearchOptions';

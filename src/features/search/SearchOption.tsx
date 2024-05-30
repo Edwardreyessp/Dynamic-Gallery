@@ -12,9 +12,8 @@ export const SearchOption = ({ children, value }: Props) => {
 
 	const onClick = () => {
 		const params = new URLSearchParams(searchParams.toString());
-		console.log('Params', params);
 		params.set('search', value);
-		console.log('Params set', params);
+
 		router.push(`gallery?${params.toString()}`);
 	};
 
