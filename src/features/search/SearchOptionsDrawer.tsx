@@ -1,14 +1,30 @@
 import { ScrollArea } from '@/components/ui/scroll-area';
-import { getPhotos } from '@/app/api/photos/route';
 import { SearchOption } from './SearchOption';
 import { MagnifyingGlassIcon } from '@heroicons/react/24/solid';
+
+type Photo = {
+	id: string;
+	url: string;
+	title: string;
+	slug: string;
+	createdAt: Date;
+	updatedAt: Date;
+};
+
+async function getOptions(search: string) {
+	const photos: Photo[] = await fetch(
+		`http://localhost:3000/api/photos?search=${search}`
+	).then(res => res.json());
+
+	return photos;
+}
 
 type Props = {
 	search: string;
 };
 
 export const SearchOptionsDrawer = async ({ search }: Props) => {
-	const options = await getPhotos(search);
+	const options = await getOptions(search);
 
 	return (
 		<div className='relative h-0 w-full max-w-md'>
