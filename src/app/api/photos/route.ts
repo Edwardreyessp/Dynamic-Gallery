@@ -1,21 +1,5 @@
 import prisma from '@/lib/db';
 
-export async function getPhotos(search: string) {
-	if (!search) {
-		return [];
-	}
-
-	const photos = await prisma.photo.findMany({
-		where: {
-			slug: {
-				contains: search,
-			},
-		},
-	});
-
-	return photos;
-}
-
 export async function GET(request: Request) {
 	const search = new URL(request.url).searchParams.get('search');
 
@@ -28,7 +12,13 @@ export async function GET(request: Request) {
 		});
 	}
 
-	const photos = await getPhotos(search);
+	const photos = await prisma.photo.findMany({
+		where: {
+			slug: {
+				contains: search,
+			},
+		},
+	});
 
 	return new Response(JSON.stringify(photos), {
 		headers: {
