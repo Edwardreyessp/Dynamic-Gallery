@@ -1,10 +1,15 @@
+import { Gallery } from '@/features/gallery/Gallery';
 import { SearchBar } from '@/features/search';
 
-const GalleryPage = async () => {
+const GalleryPage = async ({
+	searchParams,
+}: {
+	searchParams: { [key: string]: string | string[] | undefined };
+}) => {
 	return (
 		<div className='flex-1 flex items-center flex-col'>
 			<SearchBar />
-			<p>Mi nueva imagen</p>
+			<Gallery query={(searchParams.search as string) ?? ''} />
 		</div>
 	);
 };
