@@ -26,3 +26,21 @@ export async function GET(request: Request) {
 		},
 	});
 }
+
+export async function POST(request: Request) {
+	const { title, image, slug } = await request.json();
+
+	const photo = await prisma.photo.create({
+		data: {
+			title,
+			url: image,
+			slug,
+		},
+	});
+
+	return new Response(JSON.stringify(photo), {
+		headers: {
+			'content-type': 'application/json',
+		},
+	});
+}
