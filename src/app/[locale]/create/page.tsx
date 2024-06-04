@@ -1,34 +1,9 @@
-'use client';
+import { createPhoto } from '@/actions/actions';
 
 const CreatePage = () => {
-	const createPhoto = async (e: React.FormEvent<HTMLFormElement>) => {
-		e.preventDefault();
-
-		const form = e.target as HTMLFormElement;
-		const title = (form.elements.namedItem('title') as HTMLInputElement).value;
-		const image = (form.elements.namedItem('image') as HTMLInputElement).value;
-		const slug = (form.elements.namedItem('slug') as HTMLInputElement).value;
-
-		console.log(title, image, slug);
-
-		const res = await fetch('/api/photos', {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json',
-			},
-			body: JSON.stringify({ title, image, slug }),
-		});
-
-		if (res.ok) {
-			console.log('Photo created');
-		} else {
-			console.error('Failed to create photo');
-		}
-	};
-
 	return (
 		<div className='flex-1 flex items-center flex-col'>
-			<form onSubmit={createPhoto}>
+			<form action={createPhoto}>
 				<input type='text' name='title' id='title' placeholder='Title' />
 				<input type='text' name='image' id='image' placeholder='Image URL' />
 				<input type='text' name='slug' id='slug' placeholder='Slug' />

@@ -1,33 +1,31 @@
+import prisma from '@/lib/db';
 import { Photo } from '@prisma/client';
 import Image from 'next/image';
-
-async function getPhotos(query: string) {
-	const res = await fetch(
-		`${process.env.DOMAIN_API_URL}/photos?search=${query}`
-	);
-	return res.json();
-}
 
 type Props = {
 	query: string;
 };
 
 export const Gallery = async ({ query }: Props) => {
-	const photos: Photo[] = await getPhotos(query);
+	const photos: Photo[] = await prisma.photo.findMany({
+		where: {
+			slug: {
+				contains: query,
+			},
+		},
+	});
 
 	return (
-		<div>
+		<div className='columns-[14rem] w-full'>
 			{photos.map(photo => (
-				<div key={photo.id}>
-					<Image
-						src={photo.url}
-						alt={photo.title}
-						width={500}
-						height={500}
-						style={{ width: 'auto', height: 'auto' }}
-					/>
-					<p>{photo.title}</p>
-				</div>
+				<Image
+					key={photo.id}
+					src={photo.url}
+					alt={photo.title}
+					width={256}
+					height={256}
+					className='w-auto h-auto rounded-md mb-4 duration-200 trasition-transform ease-in-out cursor-pointer hover:scale-105'
+				/>
 			))}
 		</div>
 	);
