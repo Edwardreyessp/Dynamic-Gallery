@@ -9,7 +9,7 @@ type Props = {
 export const Gallery = async ({ query }: Props) => {
 	const photos: Photo[] = await prisma.photo.findMany({
 		where: {
-			slug: {
+			tags: {
 				contains: query,
 			},
 		},

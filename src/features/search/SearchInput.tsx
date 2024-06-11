@@ -15,14 +15,6 @@ export const SearchInput = (props: Props) => {
 	const router = useRouter();
 	const searchParams = useSearchParams();
 
-	// useEffect(() => {
-	// 	const params = new URLSearchParams(searchParams.toString());
-	// 	params.set('search', query);
-	// 	router.push(pathname + '?' + params.toString(), {
-	// 		scroll: false,
-	// 	});
-	// }, [query, router, pathname, searchParams]);
-
 	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 		setInputText('');
@@ -55,7 +47,8 @@ export const SearchInput = (props: Props) => {
 					className='block w-full p-4 ps-10 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white focus:outline-none'
 					placeholder={placeholder}
 					onChange={handleChange}
-					value={inputText}
+					// value={inputText}
+					defaultValue={searchParams.get('search') ?? ''}
 				/>
 				<button
 					type='submit'
