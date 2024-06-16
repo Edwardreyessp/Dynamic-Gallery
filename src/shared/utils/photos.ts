@@ -48,4 +48,10 @@ export const photos: Photo[] = [
 		slug: 'photo-7',
 		tags: 'cat kitty kitten feline pet animal cute fur whisker domestic mammal kitty gatito gatito felino mascota animal lindo pelaje bigote doméstico mamífero',
 	},
+	{
+		url: 'https://img.freepik.com/free-photo/shallow-focus-vertical-shot-cute-golden-retriever-puppy-sitting-grass-ground_181624-27259.jpg',
+		title: 'Photo 8',
+		slug: 'photo-8',
+		tags: 'dog puppy pet animal cute golden retriever sitting grass ground perro cachorro mascota animal lindo golden retriever sentado hierba suelo',
+	},
 ];
