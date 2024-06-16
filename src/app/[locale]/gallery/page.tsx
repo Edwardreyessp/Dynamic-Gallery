@@ -8,7 +8,10 @@ const GalleryPage = async ({
 }) => {
 	return (
 		<div className='flex-1 flex items-center flex-col px-12'>
-			<SearchBar style={{ marginBottom: 16 }} />
+			<SearchBar
+				style={{ marginBottom: 16 }}
+				search={(searchParams.search as string) ?? ''}
+			/>
 			<Gallery query={(searchParams.search as string) ?? ''} />
 		</div>
 	);

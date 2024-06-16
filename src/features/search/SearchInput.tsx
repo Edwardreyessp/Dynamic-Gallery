@@ -1,36 +1,12 @@
-'use client';
+import { setSearchQuery } from '@/actions/actions';
 import { MagnifyingGlassIcon } from '@heroicons/react/24/solid';
-import { useRouter, useSearchParams } from 'next/navigation';
-import type { Dispatch, SetStateAction } from 'react';
+import { useTranslations } from 'next-intl';
 
-type Props = {
-	placeholder: string;
-	textButton: string;
-	inputText: string;
-	setInputText: Dispatch<SetStateAction<string>>;
-};
-
-export const SearchInput = (props: Props) => {
-	const { placeholder, textButton, setInputText, inputText } = props;
-	const router = useRouter();
-	const searchParams = useSearchParams();
-
-	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-		e.preventDefault();
-		setInputText('');
-
-		const params = new URLSearchParams(searchParams.toString());
-		params.set('search', inputText);
-
-		router.push(`gallery?${params.toString()}`);
-	};
-
-	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-		setInputText(e.target.value);
-	};
+export const SearchInput = () => {
+	const t = useTranslations('SearchBar');
 
 	return (
-		<form className='max-w-md mx-auto w-full' onSubmit={handleSubmit}>
+		<form className='max-w-md mx-auto w-full' action={setSearchQuery}>
 			<label
 				htmlFor='default-search'
 				className='mb-2 font-medium text-gray-900 sr-only dark:text-white'
@@ -43,18 +19,17 @@ export const SearchInput = (props: Props) => {
 				</div>
 				<input
 					type='search'
-					id='default-search'
+					id='search'
+					name='search'
 					className='block w-full p-4 ps-10 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white focus:outline-none'
-					placeholder={placeholder}
-					onChange={handleChange}
-					// value={inputText}
-					defaultValue={searchParams.get('search') ?? ''}
+					placeholder={t('placeholder')}
+					// defaultValue={searchParams.get('search') ?? ''}
 				/>
 				<button
 					type='submit'
 					className='text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800'
 				>
-					{textButton}
+					{t('button')}
 				</button>
 			</div>
 		</form>

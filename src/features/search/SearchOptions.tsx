@@ -1,32 +1,20 @@
-'use client';
-import { useEffect, useState } from 'react';
-import { useDebounce } from 'use-debounce';
 import { MagnifyingGlassIcon } from '@heroicons/react/24/solid';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { SearchOption } from './';
-
-type Photo = {
-	id: string;
-	url: string;
-	title: string;
-	slug: string;
-	createdAt: Date;
-	updatedAt: Date;
-};
+import prisma from '@/lib/db';
 
 type Props = {
 	search: string;
 };
 
-export const SearchOptions = ({ search }: Props) => {
-	const [photos, setPhotos] = useState<Photo[]>([]);
-	const [query] = useDebounce(search, 500);
-
-	useEffect(() => {
-		fetch(`/api/photos?search=${query}`)
-			.then(res => res.json())
-			.then(data => setPhotos(data));
-	}, [query]);
+export const SearchOptions = async ({ search }: Props) => {
+	const photos = await prisma.photo.findMany({
+		where: {
+			tags: {
+				contains: search,
+			},
+		},
+	});
 
 	return (
 		<div className='relative h-0 w-full max-w-md'>

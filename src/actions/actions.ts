@@ -32,3 +32,8 @@ export async function createDB() {
 	revalidatePath('/gallery');
 	redirect('/gallery');
 }
+
+export async function setSearchQuery(formData: FormData) {
+	const search = formData.get('search') as string;
+	redirect(`/gallery?search=${search}`);
+}

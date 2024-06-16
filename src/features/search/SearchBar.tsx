@@ -1,17 +1,14 @@
-import { useTranslations } from 'next-intl';
-import { SearchComponents } from './';
+import { SearchInput } from './';
 
-interface Props extends React.HTMLAttributes<HTMLDivElement> {}
+interface Props extends React.HTMLAttributes<HTMLDivElement> {
+	search: string;
+}
 
 export const SearchBar = (props: Props) => {
-	const t = useTranslations('SearchBar');
-
 	return (
 		<div className='w-full flex flex-col gap-4 items-center' {...props}>
-			<SearchComponents
-				placeholder={t('placeholder')}
-				textButton={t('button')}
-			/>
+			<SearchInput />
+			{/* <SearchOptions search={search} /> */}
 		</div>
 	);
 };
