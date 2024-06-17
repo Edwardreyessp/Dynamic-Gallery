@@ -19,7 +19,7 @@ export const Gallery = async ({ query }: Props) => {
 	return (
 		<div className='columns-[14rem] w-full'>
 			{photos.map(photo => (
-				<Link key={photo.id} href={`/gallery/${photo.id}`}>
+				<Link key={photo.id} href={`/gallery/${photo.id}?search=${query}`}>
 					<Image
 						src={photo.url}
 						alt={photo.title}

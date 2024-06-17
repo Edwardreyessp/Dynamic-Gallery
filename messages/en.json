@@ -21,5 +21,9 @@
 	"SearchBar": {
 		"placeholder": "Mockups, photos, logos...",
 		"button": "Search"
+	},
+	"PhotoCard": {
+		"download": "Download",
+		"back": "Back to photos"
 	}
 }

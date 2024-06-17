@@ -12,9 +12,13 @@ export const pathnames = {
 		en: '/gallery',
 		es: '/galeria',
 	},
+	'/gallery/[id]': {
+		en: '/gallery/[id]',
+		es: '/galeria/[id]',
+	},
 } satisfies Pathnames<typeof locales>;
 
 // Use the default: `always`
-export const localePrefix = 'never' as const;
+export const localePrefix = 'always' as const;
 
 export type AppPathnames = keyof typeof pathnames;

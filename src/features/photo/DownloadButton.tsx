@@ -4,10 +4,11 @@ import { Button } from '@/shared/components/ui';
 type Props = {
 	url: string;
 	title: string;
+	children: React.ReactNode;
 };
 
 export const DownloadButton = (props: Props) => {
-	const { url, title } = props;
+	const { url, title, children } = props;
 
 	const handleDownload = async () => {
 		// Fetch the image and convert it to a blob
@@ -27,5 +28,5 @@ export const DownloadButton = (props: Props) => {
 		URL.revokeObjectURL(link.href);
 	};
 
-	return <Button onClick={handleDownload}>Download</Button>;
+	return <Button onClick={handleDownload}>{children}</Button>;
 };

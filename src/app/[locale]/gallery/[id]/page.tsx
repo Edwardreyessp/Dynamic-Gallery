@@ -1,13 +1,23 @@
 import { PhotoCard } from '@/features/photo/PhotoCard';
+import { SearchBar } from '@/features/search';
 import prisma from '@/lib/db';
 import { Photo } from '@prisma/client';
-import Link from 'next/link';
+import { getTranslations } from 'next-intl/server';
 import { permanentRedirect } from 'next/navigation';
 
-const PhotoPage = async ({ params: { id } }: { params: { id: string } }) => {
+const PhotoPage = async ({
+	params,
+	searchParams,
+}: {
+	params: { id: string; locale: string };
+	searchParams: { [key: string]: string | string[] | undefined };
+}) => {
+	const { locale } = params;
+	const t = await getTranslations({ locale, namespace: 'PhotoCard' });
+
 	const photo: Photo | null = await prisma.photo.findUnique({
 		where: {
-			id,
+			id: params.id,
 		},
 	});
 
@@ -16,20 +26,11 @@ const PhotoPage = async ({ params: { id } }: { params: { id: string } }) => {
 	}
 
 	return (
-		<section className='py-24'>
-			<div className='container'>
-				<div>
-					<Link
-						href='/gallery'
-						className='font-semibold italic text-sky-600 underline'
-					>
-						Back to photos
-					</Link>
-				</div>
+		<section className='py-24 flex-1'>
+			<div className='container flex flex-col items-center justify-center gap-8'>
+				<SearchBar search={(searchParams.search as string) ?? ''} />
 
-				<div className='mt-10 w-1/3'>
-					<PhotoCard photo={photo} />
-				</div>
+				<PhotoCard photo={photo} downloadText={t('download')} />
 			</div>
 		</section>
 	);

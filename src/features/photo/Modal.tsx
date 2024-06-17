@@ -12,7 +12,12 @@ import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { DownloadButton } from './';
 
-export const Modal = ({ photo }: { photo: Photo }) => {
+type Props = {
+	photo: Photo;
+	downloadText: string;
+};
+
+export const Modal = ({ photo, downloadText }: Props) => {
 	const router = useRouter();
 
 	return (
@@ -38,7 +43,9 @@ export const Modal = ({ photo }: { photo: Photo }) => {
 					</DialogDescription>
 				</DialogHeader>
 				<DialogFooter>
-					<DownloadButton url={photo.url} title={photo.title} />
+					<DownloadButton url={photo.url} title={photo.title}>
+						{downloadText}
+					</DownloadButton>
 				</DialogFooter>
 			</DialogContent>
 		</Dialog>
