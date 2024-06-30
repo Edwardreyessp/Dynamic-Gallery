@@ -1,7 +1,8 @@
 {
 	"Home": {
 		"title": "Free and high quality stock images",
-		"subtitle": "Download free stock images for your projects. All images are free to use and high quality."
+		"subtitle": "Download free stock images for your projects. All images are free to use and high quality.",
+		"search": "Leave the field empty to see all images"
 	},
 	"LocaleSwitcher": {
 		"label": "Change language",

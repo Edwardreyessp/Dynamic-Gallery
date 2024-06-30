@@ -14,19 +14,22 @@ export const Footer = () => {
 						className='flex items-center mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse'
 					>
 						<Image
-							src='/logo.svg'
+							src='/Logo.png'
 							alt='Logo'
 							width={32}
 							height={32}
 							style={{ aspectRatio: '1/1' }}
 						/>
 						<span className='self-center text-2xl font-semibold whitespace-nowrap dark:text-white'>
-							Tailwind
+							Edward
 						</span>
 					</Link>
 					<ul className='flex flex-wrap items-center mb-6 text-sm font-medium text-gray-500 sm:mb-0 dark:text-gray-400'>
 						<li>
-							<Link href='/about' className='hover:underline me-4 md:me-6'>
+							<Link
+								href='https://www.edwardreyessp.dev'
+								className='hover:underline me-4 md:me-6'
+							>
 								{t('about')}
 							</Link>
 						</li>

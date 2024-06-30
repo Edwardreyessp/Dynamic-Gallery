@@ -1,7 +1,8 @@
 {
 	"Home": {
 		"title": "Imágenes de stock gratuitas y de alta calidad",
-		"subtitle": "Descarga imágenes de stock para tus proyectos. Todas las fotos son gratuitas y de alta calidad."
+		"subtitle": "Descarga imágenes de stock para tus proyectos. Todas las fotos son gratuitas y de alta calidad.",
+		"search": "Deja el campo vacío para ver todas las imágenes"
 	},
 	"LocaleSwitcher": {
 		"label": "Cambiar idioma",
